@@ -11,11 +11,12 @@
   	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
     <!--<![endif]-->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-animate.js"></script>
 	<script src="js/app.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Voces' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body>
+<body ng-init="show=false">
 	<div id="main-container">
 		<div id="main-content">
 			<div class="main-heading">
@@ -28,19 +29,20 @@
 						<label for="tag">Search a tag on flickr: </label>
 					</span>
 					<input type="text" ng-model="search_tag" id="tag" placeholder="hockey" required>
-					<button type="submit" class="pure-button pure-button-primary">Submit</button>
+					<button type="submit" ng-click="show = true" class="pure-button pure-button-primary">Submit</button>
 				</form>
 			</div>
 
-			<div class="center message" ng-if="searching">
-				We're searching for "{{search_msg}}" images for you.
-			</div>
-			<div class="center message" ng-if="imgFound">
-				We found {{numImages}} images for "{{search_msg}}".
-			</div>
-			<div class="center message" ng-if="errorFound">
-				Sorry, something went wrong.
-			</div>
+				<div class="center message-block message" ng-if="show && searching">
+					We're searching for "{{search_msg}}" images for you.
+				</div>
+				<div class="center message" ng-if="show && imgFound">
+					We found {{numImages}} images for "{{search_msg}}".
+				</div>
+				<div class="center message" ng-if="errorFound">
+					Sorry, something went wrong.
+				</div>
+
 		
 		</div> <!-- close main-content -->
 

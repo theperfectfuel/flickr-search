@@ -45,3 +45,23 @@ body {
 	font-color: #bcbcbc;
 }
 
+.message-block {
+    overflow: hidden;
+}
+
+.message-block.ng-enter, .message-block.ng-leave {
+    transition: all linear .5s;
+}
+
+.message-block.ng-enter,
+.message-block.ng-leave.ng-leave-active {
+    opacity: 0;
+    max-height:0;
+}
+
+.message-block.ng-leave,
+.message-block.ng-enter.ng-enter-active {
+    opacity: 1;
+    max-height:1em;
+}
+

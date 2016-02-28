@@ -1,4 +1,4 @@
-var flickrApp = angular.module('flickrApp', []);
+var flickrApp = angular.module('flickrApp', ['ngAnimate']);
 
 flickrApp.controller('flickrCtrl', function($scope, $http, $q, $timeout) {
 	$scope.message = "Flickr Tag Search";
@@ -42,7 +42,12 @@ flickrApp.controller('flickrCtrl', function($scope, $http, $q, $timeout) {
 			$scope.numImages = $scope.photos.length;
 			$scope.search_msg = $scope.search_tag;
 			$scope.search_tag = "";
-		});
+		})
+		.catch(function (err) {
+            // Catch promise rejections (e.g. problems with HTTP call)
+            $scope.errorFound = true;
+            showErrorMessage(err, context);
+        });
 	};
 
 });
